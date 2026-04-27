@@ -22,6 +22,7 @@ import {
   skills,
   testimonials,
 } from "@/data/portfolio-content";
+import { VisualEffects } from "@/components/visual-effects";
 
 type SectionProps = {
   id: string;
@@ -92,10 +93,11 @@ export default function PortfolioPage() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-obsidian text-zinc-100">
-      <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-45" />
-      <div className="pointer-events-none absolute inset-0 bg-radial-veil" />
-      <div className="pointer-events-none absolute inset-0 bg-wave-lines opacity-70" />
+    <div className="relative isolate min-h-screen overflow-hidden bg-obsidian text-zinc-100">
+      <VisualEffects />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-grid-pattern opacity-45" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-radial-veil" />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-wave-lines opacity-70" />
 
       <header className="glass-nav sticky top-0 z-50 border-b border-white/10">
         <div className="content-container flex items-center justify-between py-4">
@@ -126,7 +128,7 @@ export default function PortfolioPage() {
         </div>
       </header>
 
-      <main id="home" className="relative">
+      <main id="home" className="relative z-10">
         <section className="content-container relative flex w-full flex-col items-center overflow-hidden pt-16 pb-24 text-center md:pt-24">
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -150,7 +152,7 @@ export default function PortfolioPage() {
                     width={136}
                     height={136}
                     priority
-                    className="hero-avatar-image h-[8.5rem] w-[8.5rem]"
+                    className="hero-avatar-image h-34 w-34"
                     onError={() => setAvatarFailed(true)}
                   />
                 ) : (
