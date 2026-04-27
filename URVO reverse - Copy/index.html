@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon-light.svg" />
+    <link rel="manifest" href="./manifest.json" />
+    <script>
+      function setFavicon() {
+        const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const favicon = document.querySelector('link[rel="icon"]');
+        if (favicon) {
+          favicon.href = darkMode ? './favicon-dark.svg' : './favicon-light.svg';
+        }
+      }
+      setFavicon();
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Muhammad Qasim | Portfolio</title>
+    <meta name="description" content="Portfolio of Muhammad Qasim, Computer Science Student." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" />
+    <link rel="stylesheet" media="all" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" />
+
+    <!-- React script commented out to show a blank screen -->
+    <!-- <script type="module" crossorigin src="./assets/index-CvF4AjaQ.js"></script> -->
+    <link rel="stylesheet" crossorigin href="./assets/index-upEtKbK-.css">
+  </head>
+  <body>
+    <!-- The CSS is loaded, and you can now write your own HTML here -->
+    <div id="root">
+      <div style="padding: 4rem; text-align: center;">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Hello, I'm Muhammad Qasim</h1>
+        <p style="font-size: 1.5rem; opacity: 0.8;">If you can see the dark background and this text using the DM Sans font, the themes and CSS are successfully loaded!</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Profile placeholder">
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(166 120) rotate(52) scale(430)">
+      <stop offset="0" stop-color="#3f3f46"/>
+      <stop offset="0.46" stop-color="#18181b"/>
+      <stop offset="1" stop-color="#09090b"/>
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="256" fill="url(#bg)"/>
+  <circle cx="256" cy="198" r="94" fill="#27272a"/>
+  <path d="M96 440C123 353 183 310 256 310C329 310 389 353 416 440" fill="#27272a"/>
+  <circle cx="402" cy="108" r="16" fill="#22c55e"/>
+</svg>

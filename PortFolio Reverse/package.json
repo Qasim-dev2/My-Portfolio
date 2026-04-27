@@ -1,0 +1,11 @@
+{
+  "name": "muhammad-qasim-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio website for Muhammad Qasim",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "license": "MIT"
+}
