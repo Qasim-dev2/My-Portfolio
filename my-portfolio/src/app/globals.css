@@ -147,62 +147,36 @@ h6 {
   content: "";
   position: absolute;
   top: 0;
-  left: -50%;
-  width: 200%;
-  height: 2px;
-  z-index: 0;
-  border-radius: 9999px;
-  background:
-    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.72), rgba(0, 255, 200, 0.12), transparent),
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(255, 255, 255, 0.12) 0%,
-      rgba(255, 255, 255, 0.06) 25%,
-      transparent 60%
-    ),
-    linear-gradient(
-      120deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.08) 50%,
-      transparent 60%
-    );
-  mix-blend-mode: overlay;
-  opacity: 0.74;
-  filter: blur(1.8px);
-  transform: translate3d(-60%, 0, 0) rotate(-0.5deg);
-  animation: scanLine 2s ease-out forwards;
-  animation-fill-mode: forwards;
+  left: -60%;
+  width: 220%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 1),
+    transparent
+  );
+  filter: blur(5px);
+  animation: movingSweep 2s ease-out forwards;
   pointer-events: none;
+  z-index: 1;
 }
 
 .hero-shell::after {
   content: "";
   position: absolute;
-  top: -20%;
-  left: -50%;
-  width: 200%;
-  height: 150%;
-  z-index: 0;
-  border-radius: 3rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 50px rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  animation: revealStaticGlow 2s ease-out forwards;
   pointer-events: none;
-  mix-blend-mode: soft-light;
-  opacity: 0.12;
-  filter: blur(76px);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.18),
-      rgba(255, 255, 255, 0.08),
-      transparent 60%
-    ),
-    radial-gradient(
-      circle at 58% 38%,
-      rgba(0, 255, 200, 0.12),
-      transparent 70%
-    );
-  transform: translate3d(-60%, 0, 0);
-    animation: lightReveal 2s ease-out forwards;
-  animation-fill-mode: forwards;
+  z-index: 1;
 }
 
 .hero-shell:hover,
@@ -226,6 +200,7 @@ h6 {
   box-shadow:
     0 0 18px rgba(255, 255, 255, 0.08),
     0 0 50px rgba(255, 255, 255, 0.04);
+  animation: nameIlluminate 2s ease-out forwards;
 }
 
 .hero-name-shine {
@@ -251,6 +226,7 @@ h6 {
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
     0 22px 70px rgba(0, 0, 0, 0.56),
     0 0 0 9px rgba(255, 255, 255, 0.03);
+  animation: avatarIlluminate 2s ease-out forwards;
 }
 
 .hero-avatar-shell::before {
@@ -419,36 +395,64 @@ h6 {
   }
 }
 
-@keyframes scanLine {
+@keyframes movingSweep {
   0% {
-    transform: translateX(-60%);
+    transform: translateX(0%);
     opacity: 1;
   }
 
   80% {
-    transform: translateX(60%);
+    transform: translateX(80%);
     opacity: 1;
   }
 
   100% {
-    transform: translateX(60%);
+    transform: translateX(80%);
     opacity: 0;
   }
 }
 
-@keyframes lightReveal {
+@keyframes revealStaticGlow {
   0% {
-    opacity: 0.2;
-    transform: scale(0.9);
+    opacity: 0;
   }
 
-  60% {
+  70% {
     opacity: 1;
   }
 
   100% {
-    opacity: 0.35;
-    transform: scale(1);
+    opacity: 0.85;
+  }
+}
+
+@keyframes nameIlluminate {
+  0% {
+    filter: blur(0.95px) brightness(0.8) drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+  30% {
+    filter: blur(0.95px) brightness(0.8) drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+  70% {
+    filter: blur(0.95px) brightness(1.6) drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+  }
+  100% {
+    filter: blur(0.95px) brightness(1.3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  }
+}
+
+@keyframes avatarIlluminate {
+  0% {
+    filter: brightness(0.8) drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+  30% {
+    filter: brightness(0.8) drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+  70% {
+    filter: brightness(1.4) drop-shadow(0 0 40px rgba(255, 255, 255, 0.6));
+  }
+  100% {
+    filter: brightness(1.2) drop-shadow(0 0 30px rgba(255, 255, 255, 0.4));
   }
 }
 
@@ -457,5 +461,12 @@ h6 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .hero-shell::before,
+  .hero-shell::after,
+  .hero-name-spotlight,
+  .hero-avatar-shell {
+    animation-duration: 2s !important;
   }
 }
