@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -72,6 +72,62 @@ export default function PortfolioPage() {
     .map((part) => part[0])
     .join("")
     .toUpperCase();
+
+  useEffect(() => {
+    const supportsFinePointer = window.matchMedia("(pointer: fine)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (!supportsFinePointer.matches || reducedMotion.matches) {
+      return;
+    }
+
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".hero-shell, .urvo-card"));
+    const cleanupFunctions: Array<() => void> = [];
+
+    cards.forEach((card) => {
+      const maxTilt = 6;
+
+      const setTilt = (rotateX: number, rotateY: number, scale: number) => {
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+      };
+
+      const handlePointerEnter = () => {
+        setTilt(0, 0, 1.02);
+      };
+
+      const handlePointerMove = (event: PointerEvent) => {
+        const rect = card.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left;
+        const offsetY = event.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((offsetY - centerY) / centerY) * -maxTilt;
+        const rotateY = ((offsetX - centerX) / centerX) * maxTilt;
+
+        setTilt(rotateX, rotateY, 1.02);
+      };
+
+      const handlePointerLeave = () => {
+        setTilt(0, 0, 1);
+      };
+
+      card.addEventListener("pointerenter", handlePointerEnter);
+      card.addEventListener("pointermove", handlePointerMove);
+      card.addEventListener("pointerleave", handlePointerLeave);
+
+      cleanupFunctions.push(() => {
+        card.removeEventListener("pointerenter", handlePointerEnter);
+        card.removeEventListener("pointermove", handlePointerMove);
+        card.removeEventListener("pointerleave", handlePointerLeave);
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+      });
+    });
+
+    return () => {
+      cleanupFunctions.forEach((cleanup) => cleanup());
+    };
+  }, []);
 
   function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
