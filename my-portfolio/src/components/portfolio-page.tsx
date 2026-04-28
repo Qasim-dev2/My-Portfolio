@@ -207,6 +207,7 @@ export default function PortfolioPage() {
                     alt={profile.profileImageAlt || `${profile.name} profile photo`}
                     width={136}
                     height={136}
+                    sizes="136px"
                     priority
                     className="hero-avatar-image h-34 w-34"
                     onError={() => setAvatarFailed(true)}

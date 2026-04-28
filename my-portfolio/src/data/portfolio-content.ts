@@ -33,7 +33,7 @@ export type TestimonialItem = {
 export const profile = {
   name: "Muhammad Qasim",
   title: "Full Stack & AI Developer",
-  profileImage: "/qasim-profile.jpg",
+  profileImage: "/qasim-edited.png",
   profileImageAlt: "Portrait of Muhammad Qasim",
   oneLiner:
     "I build high-performance web products with modern full stack engineering and practical AI integration.",
