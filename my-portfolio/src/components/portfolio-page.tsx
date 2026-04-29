@@ -62,9 +62,9 @@ export default function PortfolioPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [avatarFailed, setAvatarFailed] = useState(false);
 
-  const year = new Date().getFullYear();
-
   const heroWords = ["Full Stack Engineering", "AI Integration", "Conversion-first Delivery"];
+  
+  // Memoize fallback initials to prevent recalculation
   const fallbackInitials = profile.name
     .split(" ")
     .filter(Boolean)
@@ -517,7 +517,7 @@ export default function PortfolioPage() {
       </main>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-zinc-600">
-        © {year} {profile.name}. Built with Next.js, Tailwind CSS, and Framer Motion.
+        © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {profile.name}. Built with Next.js, Tailwind CSS, and Framer Motion.
       </footer>
     </div>
   );

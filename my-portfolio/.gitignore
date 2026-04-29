@@ -1,30 +1,40 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Environment variables
+.env
+.env.local
+.env.*.local
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# testing
-/coverage
+# Next.js
+.next/
+out/
+build/
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
-*.pem
 
-# debug
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+.turbo
+
+# Testing
+.coverage
+coverage/
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
